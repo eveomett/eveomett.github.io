@@ -1,1 +1,58 @@
-Hello World
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<main>  This is my title </main>
+<body onload='init()'></body>
+<svg width=600 height=600>
+</svg>
+<script>
+function init() {
+const Women = [2686, 13796];
+const cum_Women = [2686, 16482];
+const Men = [8265, 15310];
+const cum_Men = [8265, 23575]
+const n = 2
+const length = 600
+const w = (0.45)*length/n
+const marg = (0.1)*length/n
+var x = d3.scaleLinear().domain([0,2]).range([0,length]);
+var y = d3.scaleLinear().domain([0,23575]).range([length,0]);
+d3.select("svg")
+  .append("g")
+  .selectAll().data(Men).enter().append('rect')
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", 0)
+  .attr("y",function(d,i){ return y(cum_Men[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return length-y(d)})
+  .transition()
+  .duration(2000)
+  .style("stroke", "black")
+  .transition()
+  .duration(5000)
+  .attr("x",function(d,i){ return x(i); })
+  .attr("y",function(d,i){ return y(d); })
+  .attr("width",w)
+  .attr("height", function(d,i){ return length-y(d)});
+d3.select("svg")
+  .append("g")
+  .selectAll().data(Women).enter().append('rect')
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x",w)
+  .attr("y",function(d,i){ return y(cum_Women[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return length-y(d)})
+  .transition()
+  .duration(2000)
+  .style("stroke", "black")
+  .transition()
+  .duration(5000)
+  .attr("x",function(d,i){ return w+x(i); })
+  .attr("y",function(d,i){ return y(d) })
+  .attr("width", w)
+  .attr("height", function(d,i){ return length-y(d)});
+}
+</script>
+</body>
+</html>
