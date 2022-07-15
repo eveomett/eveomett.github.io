@@ -5,8 +5,8 @@
 <svg width=600 height=600>
 </svg>
 <script>
-function init() {
-const Women = [2686, 13796];
+async function init() {
+const data = await d3.csv('https://github.com/eveomett/eveomett.github.io/blob/main/SandE.csv');
 const cum_Women = [2686, 16482];
 const Men = [8265, 15310];
 const cum_Men = [8265, 23575]
@@ -42,16 +42,16 @@ d3.select("svg")
   .attr("x",w)
   .attr("y",function(d,i){ return y(cum_Women[i]) })
   .attr("width",w)
-  .attr("height", function(d,i){ return length-y(d)})
+  .attr("height", function(d,i){ return length-y(d.Women)})
   .transition()
   .duration(2000)
   .style("stroke", "black")
   .transition()
   .duration(5000)
   .attr("x",function(d,i){ return w+x(i); })
-  .attr("y",function(d,i){ return y(d) })
+  .attr("y",function(d,i){ return y(d.Women) })
   .attr("width", w)
-  .attr("height", function(d,i){ return length-y(d)});
+  .attr("height", function(d,i){ return length-y(d.Women)});
 }
 </script>
 </body>
