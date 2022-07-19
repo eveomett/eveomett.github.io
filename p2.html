@@ -1,0 +1,207 @@
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+<head>
+  <title> Men and Women Obtaining Ph.D.s in 2018</title>
+  <style>
+    p   {
+      color: rgb(99, 11, 224);
+      font-size: 24pt;
+      border: 2px solid black;
+      padding: 10px;
+    }
+    h1  {
+      color: black; 
+      font-size: 24pt;
+      }
+    footer {
+      color: black;
+      font-size: 12pt;
+    }
+  </style>
+  <style>
+    .pagination {
+      display: inline-block;
+    }
+    
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+    
+    .pagination a.active {
+      background-color: rgb(99, 11, 224);
+      color: white;
+    }
+    
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+  </head>
+  
+<body onload='init()'>
+<h1> <center>Men and Women Obtaining Ph.D.s in 2018  </center></h1>
+<p> But upon disagregation, we see some imbalance.   </p>
+<div class="pagination">
+  <a href="https://eveomett.github.io/">&laquo;</a>
+  <a href="https://eveomett.github.io/">1</a>
+  <a class = "active" href="https://eveomett.github.io/p2.html">2</a>
+  <a href="https://eveomett.github.io/p3.html">3</a>
+  <a href="https://eveomett.github.io/p4.html">4</a>
+  <a href="https://eveomett.github.io/p5.html">5</a>
+  <a href="https://eveomett.github.io/p6.html">6</a>
+  <a href="https://eveomett.github.io/p3.html">&raquo;</a>
+</div>
+<br>
+<svg width=1800 height=1000>
+</svg>
+<footer>
+  Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
+</footer>
+</body>
+<script>
+var WomenSE = [16482]
+var MenSE = [23575]
+var WomenNonSE = [19962]
+var MenNonSE = [12313]
+const n = 21
+const ylength = 1000-2*50
+const xlength = 1800-2*50
+const w = (0.45)*xlength/n
+const marg = (0.1)*xlength/n
+const ax_marg = 50
+var x = d3.scaleLinear().domain([0,n]).range([0,xlength]);
+var y = d3.scaleLinear().domain([0,36444]).range([ylength,0]);
+var newy = d3.scaleLinear().domain([0,23575]).range([ylength,0]);
+function init(){
+    d3.select("svg")
+      .append("g")
+      .attr("transform", "translate(50, 50)")
+      .selectAll().data(MenNonSE).enter().append('rect')
+      .classed("MenNonSE", true)
+      .style("stroke", "lightblue")
+      .style("fill", "lightblue")
+      .attr("x",0)
+      .attr("y",function(d,i){ return y(d)} )
+      .attr("width",w)
+      .attr("height", function(d,i){ return ylength -y(d) })
+      .transition()
+      .duration(2000)
+      .style("stroke", "black")
+      .transition()
+      .duration(5000)
+      .transition()
+      .duration(3000)
+      .attr("y", function(d,i){ return  newy(d)})
+      .attr("height", function(d,i){return ylength - newy(d)})
+      .transition()
+      .duration(1000)
+      .style("stroke", "lightblue");
+    d3.select("svg")
+      .append("g")
+      .attr("transform", "translate(50, 50)")
+      .selectAll().data(MenSE).enter().append('rect')
+      .classed("MenSE", true)
+      .style("stroke", "lightblue")
+      .style("fill", "lightblue")
+      .attr("x",0)
+      .attr("y",y(35888) )
+      .attr("width",w)
+      .attr("height", function(d,i){ return ylength -y(d) })
+      .transition()
+      .duration(2000)
+      .style("stroke", "black")
+      .transition()
+      .duration(5000)
+      .attr("y", function(d,i){return y(d)})
+      .attr("x", 2*w+marg)
+      .transition()
+      .duration(3000)
+      .attr("y", function(d,i){ return  newy(d)})
+      .attr("height", function(d,i){return ylength - newy(d)})
+      .transition()
+      .duration(1000)
+      .style("stroke", "lightblue");
+    d3.select("svg")
+      .append("g")
+      .attr("transform", "translate(50, 50)")
+      .selectAll().data(WomenNonSE).enter().append('rect')
+      .classed("WomenNonSE", true)
+      .style("stroke", "pink")
+      .style("fill", "pink")
+      .attr("x",w)
+      .attr("y",function(d,i){ return y(d)} )
+      .attr("width",w)
+      .attr("height", function(d,i){ return ylength -  y(d)})
+      .transition()
+      .duration(2000)
+      .style("stroke", "black")
+      .transition()
+      .duration(5000)
+      .transition()
+      .duration(3000)
+      .attr("y", function(d,i){ return  newy(d)})
+      .attr("height", function(d,i){return ylength - newy(d)})
+      .transition()
+      .duration(1000)
+      .style("stroke", "pink");
+    d3.select("svg")
+      .append("g")
+      .attr("transform", "translate(50, 50)")
+      .selectAll().data(WomenSE).enter().append('rect')
+      .classed("WomenSE", true)
+      .style("stroke", "pink")
+      .style("fill", "pink")
+      .attr("x",w)
+      .attr("y", y(36444) )
+      .attr("width",w)
+      .attr("height", function(d,i){ return ylength -  y(d)})
+      .transition()
+      .duration(2000)
+      .style("stroke", "black")
+      .transition()
+      .duration(5000)
+      .attr("y", function(d,i){return y(d)})
+      .attr("x", 3*w+marg)
+      .transition()
+      .duration(3000)
+      .attr("y", function(d,i){ return  newy(d)})
+      .attr("height", function(d,i){return ylength - newy(d)})
+      .transition()
+      .duration(1000)
+      .style("stroke", "pink");
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.MenNonSE', true).data(MenNonSE)
+      .append("svg:title")
+      .text(function(d){return d +" Men in Humanities"});
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.MenSE', true).data(MenSE)
+      .append("svg:title")
+      .text(function(d){return d +" Men in Science or Engineering"});
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.WomenNonSE', true).data(WomenNonSE)
+      .append("svg:title")
+      .text(function(d){return d +" Women in Humanities"});
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.WomenSE', true).data(WomenSE)
+      .append("svg:title")
+      .text(function(d){return d +" Women in Science or Engineering"});
+    d3.select("svg").append("g")
+      .attr("transform", "translate(50, 50)")
+      .call(d3.axisLeft(y))
+      .transition()
+      .duration(2000)
+      .transition()
+      .duration(5000)
+      .transition()
+      .duration(3000)
+      .call(d3.axisLeft(newy));
+}
+</script>
+</body>
+</html>

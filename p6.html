@@ -1,0 +1,703 @@
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+<main>  This is my title </main>
+<head>
+  <title> Men and Women Obtaining Ph.D.s in 2018</title>
+  <style>
+    p   {
+      color: rgb(99, 11, 224);
+      font-size: 24pt;
+      border: 2px solid black;
+      padding: 10px;
+    }
+    h1  {
+      color: black; 
+      font-size: 24pt;
+      }
+    footer {
+      color: black;
+      font-size: 12pt;
+    }
+  </style>
+  <style>
+    .pagination {
+      display: inline-block;
+    }
+    
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+    
+    .pagination a.active {
+      background-color: rgb(99, 11, 224);
+      color: white;
+    }
+    
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+    </style>
+  <style>
+  .button {
+    border: none;
+    background-color: white;
+    color: black;
+    border: 2px solid grey;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button:hover {
+  background-color: grey;
+  color: white;
+}
+  </style>
+</head>
+<body onload='init()'>
+<h1> <center>Men and Women Obtaining Ph.D.s in 2018  </center></h1>
+  <p> Further disagregation reveals further imbalances: <br>
+  <button class="button" onclick="disag_EAOSci()" id = "EAOSciences" >Disaggregate Earth, Atomospheric, and Ocean Sciences</button>
+  <button class="button" onclick="disag_SocSci()" id = "SocialSciences" >Disaggregate Social Sciences</button>
+  <button class="button" onclick="disag_PhysSci()" id = "PhysicalSciences" >Disaggregate Physical Sciences</button>
+  <button class="button" onclick="disag_Eng()" id = "Engineering" >Disaggregate Engineering</button>  </p>
+  <div class="pagination">
+      <a href="https://eveomett.github.io/p5.html">&laquo;</a>
+      <a href="https://eveomett.github.io/">1</a>
+      <a href="https://eveomett.github.io/p2.html">2</a>
+      <a href="https://eveomett.github.io/p3.html">3</a>
+      <a href="https://eveomett.github.io/p4.html">4</a>
+      <a href="https://eveomett.github.io/p5.html">5</a>
+      <a class = "active" href="https://eveomett.github.io/p6.html">6</a>
+      <a href="https://eveomett.github.io/p6.html">&raquo;</a>
+  </div> 
+<br>
+<svg width=1800 height=1000>
+</svg>
+<footer>
+  Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
+</footer>
+</body>
+<script>
+const eng_name_change = document.getElementById('Engineering');
+eng_name_change.addEventListener('click', function change_name(){
+  if(eng_name_change.textContent.includes("Disaggregate Engineering")){
+    eng_name_change.innerHTML = '<span>Aggregate Engineering</span>'
+  }
+  else {
+    eng_name_change.innerHTML = "<span>Disaggregate Engineering</span>"
+  }
+})
+const phys_sci_name_change = document.getElementById('PhysicalSciences');
+phys_sci_name_change.addEventListener('click', function change_name(){
+  if(phys_sci_name_change.textContent.includes("Disaggregate Physical Sciences")){
+    phys_sci_name_change.innerHTML = '<span>Aggregate Physical Sciences</span>'
+  }
+  else {
+    phys_sci_name_change.innerHTML = "<span>Disaggregate Physical Sciences</span>"
+  }
+})
+const soc_sci_name_change = document.getElementById('SocialSciences');
+soc_sci_name_change.addEventListener('click', function change_name(){
+  if(soc_sci_name_change.textContent.includes("Disaggregate Social Sciences")){
+    soc_sci_name_change.innerHTML = '<span>Aggregate Social Sciences</span>'
+  }
+  else {
+    soc_sci_name_change.innerHTML = "<span>Disaggregate Social Sciences</span>"
+  }
+})
+const eao_sci_name_change = document.getElementById('EAOSciences');
+eao_sci_name_change.addEventListener('click', function change_name(){
+  if(eao_sci_name_change.textContent.includes("Disaggregate Earth, Atomospheric, and Ocean Sciences")){
+    eao_sci_name_change.innerHTML = '<span>Aggregate Earth, Atomospheric, and Ocean Sciences</span>'
+  }
+  else {
+    eao_sci_name_change.innerHTML = "<span>Disaggregate Earth, Atomospheric, and Ocean Sciences</span>"
+  }
+})
+var disagEngineering = 0
+var disagSocSci = 0
+var disagPhysSci = 0
+var disagEAO = 0
+const WomenEAO = [62, 66, 283];
+const cum_WomenEAO = [62, 128, 411];
+const MenEAO = [49, 108, 365];
+const cum_MenEAO = [49, 157, 522]
+const EAO_text = ["Ocean Sciences", "Atmospheric Sciences", "Earth Sciences"]
+const WomenAgComp = [639, 3117, 563, 426]
+const MenAgComp = [706, 1208, 1450, 1548]
+const AgComp_text = ["Agricultural Sciences", "Psychology", "Mathematics and Statistics", "Computer Sciences"]
+const WomenSocSci = [417, 2214]
+const cum_WomenSocSci = [427, 2641]
+const MenSocSci = [899, 1676]
+const cum_MenSocSci = [899, 2575]
+const SocSci_text = ["Economics", "Other (Sociology, Anthropology, etc)"]
+const WomenPhysSci = [96, 402, 1193]
+const cum_WomenPhysSci = [96, 498, 1691]
+const MenPhysSci = [170, 1477, 1866]
+const cum_MenPhysSci = [170, 1647, 3513]
+const PhysSci_text = ["Astronomy and Other", "Physics", "Chemistry"]
+const WomenBio = [4308]
+const MenBio = [3788]
+const WomenEngineering = [103, 42, 251, 396, 348, 255, 802, 489]
+const cum_WomenEngineering = [103, 145, 396, 792, 1140, 1395, 2197, 2686]
+const MenEngineering = [294, 305, 640, 836, 863, 1410, 1686, 2231]
+const cum_MenEngineering = [ 294, 599, 1239, 2075, 2938, 4348, 6034, 8265]
+const Engineering_text = ["Industrial Engineering", "Aerospace Engineering", "Materials Engineering", "Civil Engineering", "Chemical Engineering", "Mechanical Engineering", "Other Engineering", "Electrical Engineering"]
+const n = 21
+const ylength = 1000-2*50
+const xlength = 1800-2*50
+const w = (0.45)*xlength/n
+const marg = (0.1)*xlength/n
+var x = d3.scaleLinear().domain([0,n]).range([0,xlength]);
+var y = d3.scaleLinear().domain([0,8265]).range([ylength,0]);
+function init() {
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenEAO).enter().append('rect')
+  .classed("MenEAO", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", 0)
+  .attr("y",function(d,i){ return y(cum_MenEAO[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 522 +" Men in Earth, Atomospheric, and Ocean Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenEAO).enter().append('rect')
+  .classed("WomenEAO", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", w)
+  .attr("y",function(d,i){ return y(cum_WomenEAO[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 411 +" Women in Earth, Atomospheric, and Ocean Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenAgComp).enter().append('rect')
+  .classed("MenAgComp", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 2*w +marg + 2*w*i + i*marg })
+  .attr("y",function(d,i){ return y(d) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d, i){return d +" Men in " + AgComp_text[i]});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenAgComp).enter().append('rect')
+  .classed("WomenAgComp", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", function(d,i){ return 6*w*disagEAO + 2*w*i + 3*w  + i*marg+marg})
+  .attr("y",function(d,i){ return y(d) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d, i){return d +" Women in " + AgComp_text[i]});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenSocSci).enter().append('rect')
+  .classed("MenSocSci", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 10*w +5*marg})
+  .attr("y",function(d,i){ return y(cum_MenSocSci[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 2575 +" Men in Social Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenSocSci).enter().append('rect')
+  .classed("WomenSocSci", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 11*w +5*marg})
+  .attr("y",function(d,i){ return y(cum_WomenSocSci[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 2641 +" Women in Social Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenPhysSci).enter().append('rect')
+  .classed("MenPhysSci", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 12*w +6*marg})
+  .attr("y",function(d,i){ return y(cum_MenPhysSci[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 3513 +" Men in Physical Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenPhysSci).enter().append('rect')
+  .classed("WomenPhysSci", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 13*w +6*marg})
+  .attr("y",function(d,i){ return y(cum_WomenPhysSci[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 1691 +" Women in Physical Sciences"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenBio).enter().append('rect')
+  .classed("MenBio", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 14*w +7*marg})
+  .attr("y",function(d,i){ return y(d) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 3788 +" Men in Biology"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenBio).enter().append('rect')
+  .classed("WomenBio", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 15*w +7*marg})
+  .attr("y",function(d,i){ return y(d) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 4308 +" Women in Biology"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(MenEngineering).enter().append('rect')
+  .classed("MenEngineering", true)
+  .style("stroke", "lightblue")
+  .style("fill", "lightblue")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 16*w +8*marg})
+  .attr("y",function(d,i){ return y(cum_MenEngineering[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 8265 +" Men in Engineering"});
+d3.select("svg")
+  .append("g")
+  .attr("transform", "translate(50, 50)")
+  .selectAll().data(WomenEngineering).enter().append('rect')
+  .classed("WomenEngineering", true)
+  .style("stroke", "pink")
+  .style("fill", "pink")
+  .attr("x", function(d,i){ return 4*w*disagEAO + 2*marg*disagEAO + 17*w +8*marg})
+  .attr("y",function(d,i){ return y(cum_WomenEngineering[i]) })
+  .attr("width",w)
+  .attr("height", function(d,i){ return ylength-y(d)})
+  .append("svg:title")
+  .text(function(d){return 2686 +" Women in Engineering"});
+d3.select("svg").append("g")
+  .attr("transform", "translate(50, 50)")
+  .call(d3.axisLeft(y));
+}
+function disag_Eng() {
+  if (disagEngineering == 1){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(200)
+    .style("stroke", "lightblue")
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 16*w +8*marg})
+    .attr("y",function(d,i){ return y(cum_MenEngineering[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(200)
+    .style("stroke", "pink")
+    .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 17*w +8*marg})
+    .attr("y",function(d,i){ return y(cum_WomenEngineering[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true)
+    .select("title").text(2686 +" Women in Engineering");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true)
+    .select("title").text(8265 +" Men in Engineering");
+  }
+  if (disagEngineering == 0){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 16*w +8*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 17*w +8*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .select("title").text(function(d,i) { return d+" Men in "+ Engineering_text[i]});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .select("title").text(function(d,i) { return d+" Women in "+ Engineering_text[i]; });
+  }
+  disagEngineering = (disagEngineering+1)%2
+}
+function disag_PhysSci() {
+  if (disagPhysSci == 1){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "lightblue")
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 12*w +6*marg})
+    .attr("y",function(d,i){ return y(cum_MenPhysSci[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "pink")
+    .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 13*w +6*marg})
+    .attr("y",function(d,i){ return y(cum_WomenPhysSci[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true)
+    .select("title").text(1691 +" Women in Physical Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true)
+    .select("title").text(3513 +" Men in Physical Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 14*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 15*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w + 8*marg});
+  }
+  if (disagPhysSci == 0){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 12*w +6*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 13*w +6*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .select("title").text(function(d,i) { return d+" Men in "+ PhysSci_text[i]});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .select("title").text(function(d,i) { return d+" Women in "+ PhysSci_text[i]; });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 18*w +9*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 19*w +9*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 20*w +10*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci   + 2*w*i*disagEngineering + marg*i*disagEngineering + 21*w +10*marg});
+  }
+  disagPhysSci = (disagPhysSci+1)%2
+}
+function disag_SocSci() {
+  if (disagSocSci == 1){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true).data(MenSocSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "lightblue")
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 10*w +5*marg})
+    .attr("y",function(d,i){ return y(cum_MenSocSci[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true).data(WomenSocSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "pink")
+    .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO)  + 11*w +5*marg})
+    .attr("y",function(d,i){ return y(cum_WomenSocSci[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true)
+    .select("title").text(2641 +" Women in Social Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true)
+    .select("title").text(2575 +" Men in Social Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*w*i*disagPhysSci + marg*i*disagPhysSci +  12*w +6*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO)  +2*w*i*disagPhysSci + marg*i*disagPhysSci + 13*w +6*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 4*w*disagPhysSci + 2*marg*disagPhysSci + 14*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 4*w*disagPhysSci + 2*marg*disagPhysSci + 15*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 4*w*disagPhysSci + 2*marg*disagPhysSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) + 4*w*disagPhysSci + 2*marg*disagPhysSci  +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w +8*marg});
+  }
+  if (disagSocSci == 0){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true).data(MenSocSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO)  + 10*w +5*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true).data(WomenSocSci)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO)  + 11*w +5*marg})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true).data(MenSocSci)
+    .select("title").text(function(d,i) { return d+" Men in "+ SocSci_text[i]});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true).data(WomenSocSci)
+    .select("title").text(function(d,i) { return d+" Women in "+ SocSci_text[i]; });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 14*w +7*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO)  +2*w*i*disagPhysSci +  marg*i*disagPhysSci + 15*w +7*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 16*w +8*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 17*w +8*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 2*w*i*disagEngineering + marg*i*disagEngineering + 18*w +9*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) + 2*(2*w*disagPhysSci + marg*disagPhysSci)   + 2*w*i*disagEngineering + marg*i*disagEngineering + 19*w +9*marg});
+  }
+  disagSocSci = (disagSocSci+1)%2
+}
+function disag_EAOSci() {
+  if (disagEAO == 1){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEAO", true).data(MenEAO)
+    .transition()
+    .duration(200)
+    .style("stroke", "lightblue")
+    .attr("x", 0)
+    .attr("y",function(d,i){ return y(cum_MenEAO[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEAO", true).data(WomenEAO)
+    .transition()
+    .duration(200)
+    .style("stroke", "pink")
+    .attr("x",w)
+    .attr("y",function(d,i){ return y(cum_WomenEAO[i]) });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEAO", true)
+    .select("title").text(411 +" Women in Earth, Atomospheric, and Ocean Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEAO", true)
+    .select("title").text(522 +" Men in Earth, Atomospheric, and Ocean Sciences");
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenAgComp", true).data(MenAgComp)
+    .attr("x", function(d,i){ return 2*w + marg + 2*w*i +marg*i});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenAgComp", true).data(WomenAgComp)
+    .attr("x", function(d,i){ return 3*w + marg + 2*w*i +marg*i});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true).data(MenSocSci)
+    .attr("x", function(d,i){ return 2*w*i*disagSocSci + marg*i*disagSocSci +  10*w +5*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true).data(WomenSocSci)
+    .attr("x", function(d,i){return  2*w*i*disagSocSci + marg*i*disagSocSci + 11*w +5*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci +  12*w +6*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 13*w +6*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 14*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x",  2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 15*w +7*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci  +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w +8*marg});
+  }
+  if (disagEAO == 0){
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEAO", true).data(MenEAO)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i+ marg*i })
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEAO", true).data(WomenEAO)
+    .transition()
+    .duration(200)
+    .style("stroke", "black")
+    .attr("x",function(d,i){ return 2*w*i + marg*i + w})
+    .attr("y",function(d,i){ return y(d); });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEAO", true).data(MenEAO)
+    .select("title").text(function(d,i) { return d+" Men in "+ EAO_text[i]});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEAO", true).data(WomenEAO)
+    .select("title").text(function(d,i) { return d+" Women in "+ EAO_text[i]; });
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenAgComp", true).data(MenAgComp)
+    .attr("x", function(d,i){ return 6*w + 3*marg + 2*w*i +marg*i});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenAgComp", true).data(WomenAgComp)
+    .attr("x", function(d,i){ return 7*w + 3*marg + 2*w*i +marg*i});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenSocSci", true).data(MenSocSci)
+    .attr("x", function(d,i){ return 2*w*i*disagSocSci + marg*i*disagSocSci +  14*w +7*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenSocSci", true).data(WomenSocSci)
+    .attr("x", function(d,i){return  2*w*i*disagSocSci + marg*i*disagSocSci + 15*w +7*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenPhysSci", true).data(MenPhysSci)
+    .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 16*w +8*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci +2*w*i*disagPhysSci +  marg*i*disagPhysSci + 17*w +8*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenBio", true)
+    .attr("x", 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 18*w +9*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenBio", true)
+    .attr("x", 2*w*disagSocSci + marg*disagSocSci  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 19*w +9*marg);
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".MenEngineering", true).data(MenEngineering)
+    .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 2*w*i*disagEngineering + marg*i*disagEngineering + 20*w + 10*marg});
+  d3.select("svg")
+    .selectAll("rect")
+    .filter(".WomenEngineering", true).data(WomenEngineering)
+    .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)   + 2*w*i*disagEngineering + marg*i*disagEngineering + 21*w + 10*marg});
+  }
+  disagEAO = (disagEAO+1)%2
+}
+</script>
+</body>
+</html>
