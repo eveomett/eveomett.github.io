@@ -63,24 +63,24 @@
 const annotations = [
   {
     note: {
-      label: "There are more than 1.5 times as many women as there are men in this set of fields",
+      label: "There are more than twice as many women as there are men in this field",
       title: "More Women"
     },
-    x: 100,
-    y: 300,
-    dy: -100,
-    dx: 200,
+    x: 270,
+    y: 700,
+    dy: -400,
+    dx: 100,
     color: "#3E0DD7"
   },
   {
     note: {
-      label: "There are about 2/3 as many women as there are men in this set of fields",
+      label: "There are less than half as many women as there are men in this field",
       title: "Fewer Women"
     },
-    x: 185,
-    y: 350,
-    dy: 100,
-    dx: 230,
+    x: 750,
+    y: 750,
+    dy: -200,
+    dx: 260,
     color: "#3E0DD7"
   },
   {
@@ -90,13 +90,13 @@ const annotations = [
     },
     type: d3.annotationCalloutCircle,
     subject: {
-      radius: 70,         // circle radius
+      radius: 80,         // circle radius
       radiusPadding: 20   // white space around circle befor connector
     },
-    x: 130,
-    y: 800,
-    dy: -200,
-    dx: 700
+    x: 550,
+    y: 830,
+    dy: 0,
+    dx: 400
   }
 ]
 const makeAnnotations = d3.annotation()
