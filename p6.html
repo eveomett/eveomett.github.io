@@ -1,7 +1,6 @@
 <html>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-<main>  This is my title </main>
 <head>
   <title> Men and Women Obtaining Ph.D.s in 2018</title>
   <style>
@@ -62,11 +61,12 @@
 </head>
 <body onload='init()'>
 <h1> <center>Men and Women Obtaining Ph.D.s in 2018  </center></h1>
-  <p> Further disagregation reveals further imbalances: <br>
+  <p> Further disagregation reveals which fields are dominated by men versus women: <br>
   <button class="button" onclick="disag_EAOSci()" id = "EAOSciences" >Disaggregate Earth, Atomospheric, and Ocean Sciences</button>
   <button class="button" onclick="disag_SocSci()" id = "SocialSciences" >Disaggregate Social Sciences</button>
   <button class="button" onclick="disag_PhysSci()" id = "PhysicalSciences" >Disaggregate Physical Sciences</button>
-  <button class="button" onclick="disag_Eng()" id = "Engineering" >Disaggregate Engineering</button>  </p>
+  <button class="button" onclick="disag_Eng()" id = "Engineering" >Disaggregate Engineering</button> 
+  <span style="color:grey;"><span style = "font-size: 16pt"> Don't forget to hover over the bars to see the field and corresponding number.</span></span>  </p>
   <div class="pagination">
       <a href="https://eveomett.github.io/p5.html">&laquo;</a>
       <a href="https://eveomett.github.io/">1</a>
@@ -324,7 +324,7 @@ function disag_Eng() {
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "lightblue")
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 16*w +8*marg})
     .attr("y",function(d,i){ return y(cum_MenEngineering[i]) });
@@ -332,7 +332,7 @@ function disag_Eng() {
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "pink")
     .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 17*w +8*marg})
     .attr("y",function(d,i){ return y(cum_WomenEngineering[i]) });
@@ -350,7 +350,7 @@ function disag_Eng() {
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 16*w +8*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -358,7 +358,7 @@ function disag_Eng() {
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 17*w +8*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -379,7 +379,7 @@ function disag_PhysSci() {
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "lightblue")
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 12*w +6*marg})
     .attr("y",function(d,i){ return y(cum_MenPhysSci[i]) });
@@ -387,7 +387,7 @@ function disag_PhysSci() {
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "pink")
     .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 13*w +6*marg})
     .attr("y",function(d,i){ return y(cum_WomenPhysSci[i]) });
@@ -402,18 +402,26 @@ function disag_PhysSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 14*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 15*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w + 8*marg});
   }
   if (disagPhysSci == 0){
@@ -421,7 +429,7 @@ function disag_PhysSci() {
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 12*w +6*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -429,7 +437,7 @@ function disag_PhysSci() {
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci+marg*disagPhysSci) + 13*w +6*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -444,18 +452,26 @@ function disag_PhysSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 18*w +9*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci  + 19*w +9*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 20*w +10*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) +2*w*disagSocSci + marg*disagSocSci   + 2*w*i*disagEngineering + marg*i*disagEngineering + 21*w +10*marg});
   }
   disagPhysSci = (disagPhysSci+1)%2
@@ -466,7 +482,7 @@ function disag_SocSci() {
     .selectAll("rect")
     .filter(".MenSocSci", true).data(MenSocSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "lightblue")
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 10*w +5*marg})
     .attr("y",function(d,i){ return y(cum_MenSocSci[i]) });
@@ -474,7 +490,7 @@ function disag_SocSci() {
     .selectAll("rect")
     .filter(".WomenSocSci", true).data(WomenSocSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "pink")
     .attr("x",function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO)  + 11*w +5*marg})
     .attr("y",function(d,i){ return y(cum_WomenSocSci[i]) });
@@ -489,26 +505,38 @@ function disag_SocSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*w*i*disagPhysSci + marg*i*disagPhysSci +  12*w +6*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO)  +2*w*i*disagPhysSci + marg*i*disagPhysSci + 13*w +6*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 4*w*disagPhysSci + 2*marg*disagPhysSci + 14*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 4*w*disagPhysSci + 2*marg*disagPhysSci + 15*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 4*w*disagPhysSci + 2*marg*disagPhysSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) + 4*w*disagPhysSci + 2*marg*disagPhysSci  +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w +8*marg});
   }
   if (disagSocSci == 0){
@@ -516,7 +544,7 @@ function disag_SocSci() {
     .selectAll("rect")
     .filter(".MenSocSci", true).data(MenSocSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i+ marg*i + 2*(2*w*disagEAO + marg*disagEAO)  + 10*w +5*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -524,7 +552,7 @@ function disag_SocSci() {
     .selectAll("rect")
     .filter(".WomenSocSci", true).data(WomenSocSci)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i + marg*i + 2*(2*w*disagEAO + marg*disagEAO)  + 11*w +5*marg})
     .attr("y",function(d,i){ return y(d); });
@@ -539,26 +567,38 @@ function disag_SocSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 14*w +7*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO)  +2*w*i*disagPhysSci +  marg*i*disagPhysSci + 15*w +7*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 16*w +8*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*(2*w*disagEAO + marg*disagEAO)  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 17*w +8*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*(2*w*disagEAO + marg*disagEAO) + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 2*w*i*disagEngineering + marg*i*disagEngineering + 18*w +9*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*(2*w*disagEAO + marg*disagEAO) + 2*(2*w*disagPhysSci + marg*disagPhysSci)   + 2*w*i*disagEngineering + marg*i*disagEngineering + 19*w +9*marg});
   }
   disagSocSci = (disagSocSci+1)%2
@@ -569,7 +609,7 @@ function disag_EAOSci() {
     .selectAll("rect")
     .filter(".MenEAO", true).data(MenEAO)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "lightblue")
     .attr("x", 0)
     .attr("y",function(d,i){ return y(cum_MenEAO[i]) });
@@ -577,7 +617,7 @@ function disag_EAOSci() {
     .selectAll("rect")
     .filter(".WomenEAO", true).data(WomenEAO)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "pink")
     .attr("x",w)
     .attr("y",function(d,i){ return y(cum_WomenEAO[i]) });
@@ -592,42 +632,62 @@ function disag_EAOSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenAgComp", true).data(MenAgComp)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w + marg + 2*w*i +marg*i});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenAgComp", true).data(WomenAgComp)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 3*w + marg + 2*w*i +marg*i});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenSocSci", true).data(MenSocSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*i*disagSocSci + marg*i*disagSocSci +  10*w +5*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenSocSci", true).data(WomenSocSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return  2*w*i*disagSocSci + marg*i*disagSocSci + 11*w +5*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci +  12*w +6*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 13*w +6*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 14*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x",  2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 15*w +7*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci + 2*w*i*disagEngineering + marg*i*disagEngineering + 16*w +8*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 4*w*disagPhysSci + 2*marg*disagPhysSci  +2*w*i*disagEngineering + marg*i*disagEngineering + 17*w +8*marg});
   }
   if (disagEAO == 0){
@@ -635,7 +695,7 @@ function disag_EAOSci() {
     .selectAll("rect")
     .filter(".MenEAO", true).data(MenEAO)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i+ marg*i })
     .attr("y",function(d,i){ return y(d); });
@@ -643,7 +703,7 @@ function disag_EAOSci() {
     .selectAll("rect")
     .filter(".WomenEAO", true).data(WomenEAO)
     .transition()
-    .duration(200)
+    .duration(800)
     .style("stroke", "black")
     .attr("x",function(d,i){ return 2*w*i + marg*i + w})
     .attr("y",function(d,i){ return y(d); });
@@ -658,42 +718,62 @@ function disag_EAOSci() {
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenAgComp", true).data(MenAgComp)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 6*w + 3*marg + 2*w*i +marg*i});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenAgComp", true).data(WomenAgComp)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 7*w + 3*marg + 2*w*i +marg*i});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenSocSci", true).data(MenSocSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*i*disagSocSci + marg*i*disagSocSci +  14*w +7*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenSocSci", true).data(WomenSocSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return  2*w*i*disagSocSci + marg*i*disagSocSci + 15*w +7*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenPhysSci", true).data(MenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*w*i*disagPhysSci + marg*i*disagPhysSci + 16*w +8*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenPhysSci", true).data(WomenPhysSci)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci +2*w*i*disagPhysSci +  marg*i*disagPhysSci + 17*w +8*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 18*w +9*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenBio", true)
+    .transition()
+    .duration(800)
     .attr("x", 2*w*disagSocSci + marg*disagSocSci  + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 19*w +9*marg);
   d3.select("svg")
     .selectAll("rect")
     .filter(".MenEngineering", true).data(MenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){ return 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)  + 2*w*i*disagEngineering + marg*i*disagEngineering + 20*w + 10*marg});
   d3.select("svg")
     .selectAll("rect")
     .filter(".WomenEngineering", true).data(WomenEngineering)
+    .transition()
+    .duration(800)
     .attr("x", function(d,i){return 2*w*disagSocSci + marg*disagSocSci + 2*(2*w*disagPhysSci + marg*disagPhysSci)   + 2*w*i*disagEngineering + marg*i*disagEngineering + 21*w + 10*marg});
   }
   disagEAO = (disagEAO+1)%2
