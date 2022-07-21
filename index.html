@@ -42,7 +42,8 @@
 
 <body onload='init()'>
 <h1> <center>Men and Women Obtaining Ph.D.s in 2018  </center></h1>
-<p> When all fields are aggregated, it looks like approximately equal numbers of men and women earned Ph.D.s in 2018. </p>
+<p> When all fields are aggregated, it looks like approximately equal numbers of men and women earned Ph.D.s in 2018.
+  <br>   <span style="color:grey;"> <span style = "font-size: 16pt"> Do you know which are women and which are men?  Hover over the bars to see.</span></span></p> 
 <div class="pagination">
   <a href="https://eveomett.github.io/">&laquo;</a>
   <a class = "active" href="https://eveomett.github.io/">1</a>
@@ -77,6 +78,7 @@ function init(){
       .append("g")
       .attr("transform", "translate(50, 50)")
       .selectAll().data(Men).enter().append('rect')
+      .classed("Men", true)
       .style("stroke", "lightblue")
       .style("fill", "lightblue")
       .attr("x",0)
@@ -86,11 +88,12 @@ function init(){
       .transition()
       .duration(7000)
       .attr("y",function(d,i){ return y(d)})
-      .attr("height", function(d,i){ return ylength -y(d) });
+      .attr("height", function(d,i){ return ylength -y(d) })
     d3.select("svg")
       .append("g")
       .attr("transform", "translate(50, 50)")
       .selectAll().data(Women).enter().append('rect')
+      .classed("Women", true)
       .style("stroke", "pink")
       .style("fill", "pink")
       .attr("x",w)
@@ -101,6 +104,16 @@ function init(){
       .duration(7000)
       .attr("y",function(d,i){ return y(d)} )
       .attr("height", function(d,i){ return ylength -  y(d)});
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.Men', true).data(Men)
+      .append("svg:title")
+      .text(function(d){return d +" Men"});
+    d3.select("svg")
+      .selectAll("rect")
+      .filter('.Women', true).data(Women)
+      .append("svg:title")
+      .text(function(d){return d +" Women"});
     d3.select("svg").append("g")
       .attr("transform", "translate(50, 50)")
       .call(d3.axisLeft(y));
