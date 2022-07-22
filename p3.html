@@ -55,7 +55,7 @@
     <a href="https://eveomett.github.io/p4.html">&raquo;</a>
   </div> 
 <br>
-<svg width=1800 height=1000>
+<svg x = "0%" y = "0%" width="100%" height="100%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
   Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -119,7 +119,7 @@ var newy = d3.scaleLinear().domain([0,23575]).range([ylength,0]);
 function init(){
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(MenNonSE).enter().append('rect')
       .style("stroke", "lightblue")
       .style("fill", "lightblue")
@@ -131,7 +131,7 @@ function init(){
       .text(function(d){return d +" Men in Humanities"});
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(MenSE).enter().append('rect')
       .style("stroke", "lightblue")
       .style("fill", "lightblue")
@@ -143,7 +143,7 @@ function init(){
       .text(function(d){return d +" Men in Science or Engineering"});
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(WomenNonSE).enter().append('rect')
       .style("stroke", "pink")
       .style("fill", "pink")
@@ -155,7 +155,7 @@ function init(){
       .text(function(d){return d +" Women in Humanities"});
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(WomenSE).enter().append('rect')
       .style("stroke", "pink")
       .style("fill", "pink")
@@ -166,7 +166,7 @@ function init(){
       .append("svg:title")
       .text(function(d){return d +" Women in Science or Engineering"});
     d3.select("svg").append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .call(d3.axisLeft(y))
       .call(d3.axisLeft(newy));
     d3.select("svg")
