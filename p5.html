@@ -54,7 +54,7 @@
       <a href="https://eveomett.github.io/p6.html">&raquo;</a>
     </div> 
 <br>
-<svg width=1800 height=1000>
+<svg x = "5%" y = "0%" width="95%" height="100%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
   Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -120,7 +120,7 @@ var newy = d3.scaleLinear().domain([0,8265]).range([ylength,0]);
 function init(){
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenSE).enter().append('rect')
   .style("stroke", "lightblue")
   .style("fill", "lightblue")
@@ -132,7 +132,7 @@ d3.select("svg")
   .text(function(d, i){return d +" Men in " + SE_text[i]});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenSE).enter().append('rect')
   .style("stroke", "pink")
   .style("fill", "pink")
@@ -143,7 +143,7 @@ d3.select("svg")
   .append("svg:title")
   .text(function(d, i){return d +" Women in " + SE_text[i]});
 d3.select("svg").append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .call(d3.axisLeft(newy));
 d3.select("svg")
   .append("g")
