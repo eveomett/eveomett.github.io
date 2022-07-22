@@ -55,7 +55,7 @@
   <a href="https://eveomett.github.io/p3.html">&raquo;</a>
 </div>
 <br>
-<svg width=1800 height=1000>
+<svg x = "5%" y = "0%" width="95%" height="100%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
   Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -78,7 +78,7 @@ var newy = d3.scaleLinear().domain([0,23575]).range([ylength,0]);
 function init(){
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(MenNonSE).enter().append('rect')
       .classed("MenNonSE", true)
       .style("stroke", "lightblue")
@@ -101,7 +101,7 @@ function init(){
       .style("stroke", "lightblue");
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(MenSE).enter().append('rect')
       .classed("MenSE", true)
       .style("stroke", "lightblue")
@@ -126,7 +126,7 @@ function init(){
       .style("stroke", "lightblue");
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(WomenNonSE).enter().append('rect')
       .classed("WomenNonSE", true)
       .style("stroke", "pink")
@@ -149,7 +149,7 @@ function init(){
       .style("stroke", "pink");
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(WomenSE).enter().append('rect')
       .classed("WomenSE", true)
       .style("stroke", "pink")
@@ -193,7 +193,7 @@ function init(){
       .append("svg:title")
       .text(function(d){return d +" Women in Science or Engineering"});
     d3.select("svg").append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .call(d3.axisLeft(y))
       .transition()
       .duration(2000)
