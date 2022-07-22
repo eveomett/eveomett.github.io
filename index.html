@@ -55,7 +55,7 @@
   <a href="https://eveomett.github.io/p2.html">&raquo;</a>
 </div>
 <br>
-<svg width=1800 height=1000>
+<svg x = "5%" y = "0%" width="95%" height="100%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
  Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -76,7 +76,7 @@ var newy = d3.scaleLinear().domain([0,26444]).range([ylength,0]);
 function init(){
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(Men).enter().append('rect')
       .classed("Men", true)
       .style("stroke", "lightblue")
@@ -91,7 +91,7 @@ function init(){
       .attr("height", function(d,i){ return ylength -y(d) })
     d3.select("svg")
       .append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .selectAll().data(Women).enter().append('rect')
       .classed("Women", true)
       .style("stroke", "pink")
@@ -115,7 +115,7 @@ function init(){
       .append("svg:title")
       .text(function(d){return d +" Women"});
     d3.select("svg").append("g")
-      .attr("transform", "translate(50, 50)")
+      .attr("transform", "translate(50, 0)")
       .call(d3.axisLeft(y));
 }
 </script>
