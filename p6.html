@@ -78,7 +78,7 @@
       <a href="https://eveomett.github.io/p6.html">&raquo;</a>
   </div> 
 <br>
-<svg width=1800 height=1000>
+<svg x = "5%" y = "0%" width="95%" height="100%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
   Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -160,7 +160,7 @@ var y = d3.scaleLinear().domain([0,8265]).range([ylength,0]);
 function init() {
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenEAO).enter().append('rect')
   .classed("MenEAO", true)
   .style("stroke", "lightblue")
@@ -173,7 +173,7 @@ d3.select("svg")
   .text(function(d){return 522 +" Men in Earth, Atomospheric, and Ocean Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenEAO).enter().append('rect')
   .classed("WomenEAO", true)
   .style("stroke", "pink")
@@ -186,7 +186,7 @@ d3.select("svg")
   .text(function(d){return 411 +" Women in Earth, Atomospheric, and Ocean Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenAgComp).enter().append('rect')
   .classed("MenAgComp", true)
   .style("stroke", "lightblue")
@@ -199,7 +199,7 @@ d3.select("svg")
   .text(function(d, i){return d +" Men in " + AgComp_text[i]});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenAgComp).enter().append('rect')
   .classed("WomenAgComp", true)
   .style("stroke", "pink")
@@ -212,7 +212,7 @@ d3.select("svg")
   .text(function(d, i){return d +" Women in " + AgComp_text[i]});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenSocSci).enter().append('rect')
   .classed("MenSocSci", true)
   .style("stroke", "lightblue")
@@ -225,7 +225,7 @@ d3.select("svg")
   .text(function(d){return 2575 +" Men in Social Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenSocSci).enter().append('rect')
   .classed("WomenSocSci", true)
   .style("stroke", "pink")
@@ -238,7 +238,7 @@ d3.select("svg")
   .text(function(d){return 2641 +" Women in Social Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenPhysSci).enter().append('rect')
   .classed("MenPhysSci", true)
   .style("stroke", "lightblue")
@@ -251,7 +251,7 @@ d3.select("svg")
   .text(function(d){return 3513 +" Men in Physical Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenPhysSci).enter().append('rect')
   .classed("WomenPhysSci", true)
   .style("stroke", "pink")
@@ -264,7 +264,7 @@ d3.select("svg")
   .text(function(d){return 1691 +" Women in Physical Sciences"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenBio).enter().append('rect')
   .classed("MenBio", true)
   .style("stroke", "lightblue")
@@ -277,7 +277,7 @@ d3.select("svg")
   .text(function(d){return 3788 +" Men in Biology"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenBio).enter().append('rect')
   .classed("WomenBio", true)
   .style("stroke", "pink")
@@ -290,7 +290,7 @@ d3.select("svg")
   .text(function(d){return 4308 +" Women in Biology"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(MenEngineering).enter().append('rect')
   .classed("MenEngineering", true)
   .style("stroke", "lightblue")
@@ -303,7 +303,7 @@ d3.select("svg")
   .text(function(d){return 8265 +" Men in Engineering"});
 d3.select("svg")
   .append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .selectAll().data(WomenEngineering).enter().append('rect')
   .classed("WomenEngineering", true)
   .style("stroke", "pink")
@@ -315,7 +315,7 @@ d3.select("svg")
   .append("svg:title")
   .text(function(d){return 2686 +" Women in Engineering"});
 d3.select("svg").append("g")
-  .attr("transform", "translate(50, 50)")
+  .attr("transform", "translate(50, 0)")
   .call(d3.axisLeft(y));
 }
 function disag_Eng() {
