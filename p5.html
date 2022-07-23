@@ -6,13 +6,13 @@
   <style>
     p   {
       color: rgb(99, 11, 224);
-      font-size: 24pt;
+      font-size: 18pt;
       border: 2px solid black;
       padding: 10px;
     }
     h1  {
       color: black; 
-      font-size: 24pt;
+      font-size: 18pt;
       }
     footer {
       color: black;
@@ -42,7 +42,7 @@
 <body onload='init()'>
 <h1> <center>Men and Women Obtaining Ph.D.s in 2018  </center></h1>
     <p> We focus on Science and Engineering.   More disagregation reveals more asymetry: women dominate some fields, and men dominate others.
-      <br> <span style="color:grey;"> <span style = "font-size: 16pt"> Guess which pair of bars corresponds to which field in Science or Engineering, then hover over the bars to see if you're correct.</span></span>  </p>
+      <br> <span style="color:grey;"> <span style = "font-size: 14pt"> Guess which pair of bars corresponds to which field in Science or Engineering, then hover over the bars to see if you're correct.</span></span>  </p>
     <div class="pagination">
       <a href="https://eveomett.github.io/p4.html">&laquo;</a>
       <a href="https://eveomett.github.io/">1</a>
@@ -51,10 +51,11 @@
       <a href="https://eveomett.github.io/p4.html">4</a>
       <a class = "active" href="https://eveomett.github.io/p5.html">5</a>
       <a href="https://eveomett.github.io/p6.html">6</a>
+      <a href="https://eveomett.github.io/p7.html">7</a>
       <a href="https://eveomett.github.io/p6.html">&raquo;</a>
     </div> 
 <br>
-<svg x = "5%" y = "0%" width="95%" height="100%" viewbox ="0 0 1800 1000">
+<svg x = "5%" y = "0%" width="95%" height="78%" viewbox ="0 0 1800 1000">
 </svg>
 <footer>
   Data from <a href="https://ncses.nsf.gov/pubs/nsf21321/data-tables">NSF</a>, table 7-1.
@@ -89,12 +90,13 @@ const annotations = [
       label: "to uncover the different academic fields/numbers.",
       title: "Hover your mouse over the bars"
     },
-    type: d3.annotationCalloutCircle,
-    subject: {
-      radius: 80,         // circle radius
-      radiusPadding: 20   // white space around circle befor connector
+    connector: {
+      end: "arrow",        
+      type: "curve",       
+      points: 5,        
+      lineType : "horizontal"
     },
-    x: 550,
+    x: 850,
     y: 830,
     dy: 0,
     dx: 400
