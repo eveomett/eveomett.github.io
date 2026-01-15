@@ -5,7 +5,7 @@ title: Dr. Ellen Veomett
 <table style="width:100%;">
 <tr>
 <td width="360" valign="top" style="padding-right:24px;">
-<img src="{{ '/assets/images/Veomett.jpg' | relative_url }}"
+<img src="/assets/images/Veomett.jpg"
      alt="Dr. Ellen Veomett"
      style="width:340px; max-width:100%;">
 
