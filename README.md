@@ -1,2 +1,2 @@
 # eveomett.github.io
-Data Visualization Narrative Project
+Ellen Veomett's academic website
