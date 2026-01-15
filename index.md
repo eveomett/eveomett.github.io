@@ -4,8 +4,8 @@ title: Dr. Ellen Veomett
 
 <table style="width:100%;">
 <tr>
-<td width="260" valign="top">
-<img src="resources/images/eveomett.jpeg"
+<td width="360" valign="top" style="padding-right:24px;">
+<img src="resources/images/Veomett.jpeg"
      alt="Dr. Ellen Veomett"
      style="width:340px; max-width:100%;">
 
