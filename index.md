@@ -2,12 +2,12 @@
 title: Dr. Ellen Veomett
 ---
 
-<table>
+<table style="width:100%;">
 <tr>
-<td width="220" valign="top">
+<td width="260" valign="top">
   <img src="resources/images/eveomett.jpeg"
        alt="Dr. Ellen Veomett"
-       width="200">
+       width="240">
 </td>
 
 <td valign="top">
@@ -25,6 +25,7 @@ title: Dr. Ellen Veomett
 </tr>
 </table>
 
+
 ---
 
 - [Research](research.md)
@@ -32,3 +33,5 @@ title: Dr. Ellen Veomett
 - [Teaching](teaching.md)
 - [Immerse Course Resources](immerse.md)
 - [Computational Democracy and Equity Lab](lab.md)
+
+
