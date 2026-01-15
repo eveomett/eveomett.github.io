@@ -1,3 +1,5 @@
+# Dr. Ellen Veomett
+
 <table>
 <tr>
 <td width="220" valign="top">
@@ -7,8 +9,6 @@
 </td>
 
 <td valign="top">
-
-# Dr. Ellen Veomett
 
 **Associate Professor of Computer Science**  
 Department of Computer Science  
