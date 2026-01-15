@@ -5,9 +5,10 @@ title: Dr. Ellen Veomett
 <table style="width:100%;">
 <tr>
 <td width="260" valign="top">
-  <img src="resources/images/Veomett.jpg"
-       alt="Dr. Ellen Veomett"
-       width="240">
+<img src="resources/images/eveomett.jpeg"
+     alt="Dr. Ellen Veomett"
+     style="width:340px; max-width:100%;">
+
 </td>
 
 <td valign="top">
