@@ -10,7 +10,7 @@
 
 <td valign="top">
 
-**Associate Professor of Computer Science**  
+Associate Professor of Computer Science </br>
 Department of Computer Science  
 University of San Francisco  
 
