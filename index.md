@@ -1,7 +1,7 @@
 <table>
 <tr>
 <td width="220" valign="top">
-  <img src="assets/images/ellen-veomett.jpg"
+  <img src="assets/images/eveomett.jpg"
        alt="Dr. Ellen Veomett"
        width="200">
 </td>
