@@ -1,26 +1,31 @@
-# Dr. Ellen Veomett
+---
+title: Dr. Ellen Veomett
+---
 
 <table>
 <tr>
 <td width="220" valign="top">
-  <img src="/resources/images/eveomett.jpeg"
+  <img src="resources/images/eveomett.jpeg"
        alt="Dr. Ellen Veomett"
-       width="400">
+       width="200">
 </td>
 
 <td valign="top">
+  <p>
+    Associate Professor of Computer Science<br>
+    Department of Computer Science<br>
+    University of San Francisco
+  </p>
 
-Associate Professor of Computer Science </br>
-Department of Computer Science  
-University of San Francisco  
-
-**Email:** [eveomett@usfca.edu](mailto:eveomett@usfca.edu)  
-**Office:** Harney 440G   
-
+  <p>
+    <strong>Email:</strong> <a href="mailto:eveomett@usfca.edu">eveomett@usfca.edu</a><br>
+    <strong>Office:</strong> Harney 440G
+  </p>
 </td>
 </tr>
 </table>
 
+---
 
 - [Research](research.md)
 - [Redistricting and Computational Democracy](redistricting.md)
