@@ -11,7 +11,7 @@ title: Dr. Ellen Veomett
       Associate Professor of Computer Science<br>
       Department of Computer Science, University of San Francisco
     </div>
-
+        
     <div class="hero__meta">
       <div><strong>Email:</strong> <a href="mailto:eveomett@usfca.edu">eveomett@usfca.edu</a></div>
       <div><strong>Office:</strong> Harney 440G</div>
