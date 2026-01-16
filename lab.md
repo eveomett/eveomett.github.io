@@ -1,20 +1,20 @@
-# <span style="color:purple">Co</span>mputational Democracy and Equity (CoDE) Lab
+# <span style="color:Tyrian Purple">Co</span>mputational Democracy and Equity (CoDE) Lab
 
-At CoDE Lab, we study how computational methods can uncover and address inequities in redistricting, voting, and beyond.
+## At <span style="color:Tyrian Purple">CoDE</span> Lab, we study how computational methods can uncover and address inequities in redistricting, voting, and beyond.
 
-Through modeling, mapping, and interdisciplinary collaboration, we bring quantitative insight to questions of justice and public good.
+## Through modeling, mapping, and interdisciplinary collaboration, we bring quantitative insight to questions of justice and public good.
 
-Ongoing Research with Students:
+**Ongoing Research with Students:**
 
 Studying the connectivity of the ReCom Metagraph, to better understand the technique of outlier analysis in detecting gerrymandering
 
 Investigating the impact of disconnected precincts in constructing ensembles of redistricting maps
 
-Other Ongoing Research:
+**Other Ongoing Research:**
 
 Constructing Multimember districts and generating ranked-choice ballots (with VoteKit).  Studying the impact of the ballot-generation process, as well as the number of seats per district
 
-Completed Products with Students:
+**Completed Products with Students:**
 
 USF graduate students Ananya Agarwal, Alusi, Arbie Hsu, Arif Syraj, and I have cleaned and coalesced data for post-2020-Census maps; the maps can be found at https://github.com/eveomett-states
 
