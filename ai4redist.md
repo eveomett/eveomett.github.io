@@ -10,16 +10,16 @@ I taught this for the first time in Spring 2024.  Students finished the course w
 
 
 - Intro, Shape and population
--- Include graphs and dual graphs
+  - Include graphs and dual graphs
 - Metrics: eg, mean median, geo 
 - Markov Chains and outlier analysis
--- What are MCs
--- MCs in redistricting: flip, recom 
--- Theory of MCs 
+  - What are MCs
+  - MCs in redistricting: flip, recom 
+  - Theory of MCs 
 - Data wrangling
 - Ecological Inference
 - Short bursts
--- With finding VRA districts 
--- With testing metrics
+  - With finding VRA districts 
+  - With testing metrics
 - Extra topics (for example: GEO metric, Declination, the redistricting metagraph, machine learning to measure district compactness . . . )
 - Project work
