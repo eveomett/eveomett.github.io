@@ -1,4 +1,4 @@
-# <span style="color:#C45AEC">Co</span>mputational Democracy and Equity (CoDE) Lab
+# <span style="color:#C45AEC">Co</span>mputational <span style="color:#C45AEC">D</span>emocracy and <span style="color:#C45AEC">E</span>quity (<span style="color:#C45AEC">CoDE</span>) Lab
 
 ## At <span style="color:#C45AEC">CoDE</span> Lab, we study how computational methods can uncover and address inequities in redistricting, voting, and beyond.
 
@@ -12,7 +12,7 @@ Investigating the impact of disconnected precincts in constructing ensembles of 
 
 **Other Ongoing Research:**
 
-Constructing Multimember districts and generating ranked-choice ballots (with VoteKit).  Studying the impact of the ballot-generation process, as well as the number of seats per district
+Constructing Multimember districts and generating ranked-choice ballots (with [VoteKit](https://github.com/mggg/VoteKit)).  Studying the impact of the ballot-generation process, as well as the number of seats per district
 
 **Completed Products with Students:**
 
