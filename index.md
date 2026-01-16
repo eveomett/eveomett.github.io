@@ -1,5 +1,4 @@
 ---
-title: Dr. Ellen Veomett
 ---
 
 <div class="hero">
