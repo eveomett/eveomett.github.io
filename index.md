@@ -4,15 +4,17 @@ title: Dr. Ellen Veomett
 
 <table style="width:100%;">
 <tr>
-<td width="360" valign="top" style="padding-right:24px;">
+<td width="460" valign="top" style="padding-right:36px;">
 <img src="/assets/images/Veomett.jpg"
      alt="Dr. Ellen Veomett"
-     style="width:340px; max-width:100%;">
+     style="width:420px; max-width:100%;">
 
 </td>
 
 <td valign="top">
-  <p>
+  <h1 style="margin-top:0;">Dr. Ellen Veomett</h1>
+
+  <p style="font-size:1.1em;">
     Associate Professor of Computer Science<br>
     Department of Computer Science<br>
     University of San Francisco
