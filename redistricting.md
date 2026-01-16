@@ -42,7 +42,7 @@ Perfect Hierarchical Matchings in Graphs with S. Jacobson and I. Ludden (in revi
 
 **Data Cleaning:**
 
-USF graduate students Ananya Agarwal, Alusi, Arbie Hsu, Arif Syraj, and I have cleaned and coalesced data for post-2020-Census maps.  See our [paper](https://scholarworks.umt.edu/tme/vol23/iss3/6/) for details (published in [The Mathematics Enthusiast]((https://scholarworks.umt.edu/tme/vol23/iss3/6/))); the maps can be found at [https://github.com/eveomett-states](https://github.com/eveomett-states)
+USF graduate students Ananya Agarwal, Alusi, Arbie Hsu, Arif Syraj, and I have cleaned and coalesced data for post-2020-Census maps.  See our [paper](https://scholarworks.umt.edu/tme/vol23/iss3/6/) for details (published in [The Mathematics Enthusiast](https://scholarworks.umt.edu/tme/vol23/iss3/6/)); the maps can be found at [https://github.com/eveomett-states](https://github.com/eveomett-states)
 
 **Teaching:**
 
