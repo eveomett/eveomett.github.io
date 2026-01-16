@@ -2,7 +2,7 @@
 
 In Spring 2024 and 2025, I taught "[AI for Redistricting](ai4redist.md),"  a course for upper-division CS majors and CS graduate students.  If you're an educator considering offering a similar course, I'd be happy to share the materials I created.
 
-The same goes for "Math in Our Democracy: Detecting and Preventing Gerrymandering."  That was a "Jan term" course I taught January of 2020, 2021, and 2022 for general undergraduate students (who had taken at least one college-level math course).
+The same goes for "[Math in Our Democracy: Detecting and Preventing Gerrymandering](mathindem.md)."  That was a "Jan term" course I taught January of 2020, 2021, and 2022 for general undergraduate students (who had taken at least one college-level math course).
 
 **Articles**
 
