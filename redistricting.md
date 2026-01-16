@@ -46,6 +46,6 @@ USF graduate students Ananya Agarwal, Alusi, Arbie Hsu, Arif Syraj, and I have c
 
 **Teaching:**
 
-Spring 2024, 2025, and 2026 I taught AI for Redistricting.
+Spring 2024, 2025, and 2026 I taught [AI for Redistricting](ai4redist.md).
 
-I taught Math in our Democracy: Detecting and Preventing Gerrymandering three times during "Jan term" (Januaries of 2020, 2021, and 2022)
+I taught [Math in our Democracy: Detecting and Preventing Gerrymandering](mathindem.md) three times during "Jan term" (Januaries of 2020, 2021, and 2022)
