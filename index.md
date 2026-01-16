@@ -2,33 +2,19 @@
 layout: default
 ---
 
-<div class="hero">
-  <img class="hero__photo" src="/assets/images/Veomett.jpg" alt="Dr. Ellen Veomett">
 
-  <div class="hero__content">
-    <h1 class="hero__title">Dr. Ellen Veomett</h1>
-    <div class="hero__subtitle">
-      Associate Professor of Computer Science<br>
-      Department of Computer Science, University of San Francisco
-    </div>
-        
-    <div class="hero__meta">
-      <div><strong>Email:</strong> <a href="mailto:eveomett@usfca.edu">eveomett@usfca.edu</a></div>
-      <div><strong>Office:</strong> Harney 440G</div>
-    </div>
+## Dr. Ellen Veomett
 
-    <div class="hero__links">
-      <a class="btn" href="research.md">Research</a>
-      <a class="btn" href="redistricting.md">Redistricting & Computational Democracy</a>
-      <a class="btn" href="teaching.md">Teaching</a>
-      <a class="btn" href="lab.md">CoDE Lab</a>
-      <a class="btn" href="immerse.md">Immerse Resources</a>
-    </div>
-  </div>
-</div>
+Associate Professor of [Computer Science](https://www.usfca.edu/arts-sciences/programs/undergraduate/computer-science)
 
-<hr class="section-rule" />
+[University of San Francisco](https://www.usfca.edu/)
 
-## Welcome
+Email:    eveomett@usfca.edu
 
-I work at the intersection of mathematics, elections, and computation—especially gerrymandering metrics, redistricting analysis, and computational democracy.
+Office:   Harney 440G
+
+- [Research](research.md)
+- [Redistricting and Computational Democracy](redistricting.md)
+- [Teaching](teaching.md)
+- [Immerse Course Resources](immerse.md)
+- [Computational Democracy and Equity Lab](lab.md)
