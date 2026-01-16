@@ -1,6 +1,6 @@
 # Redistricting and Computational Democracy
 
-## *New-ish*: Click here for states repos!
+## *New-ish*: [Click here for states repos](https://github.com/eveomett-states)!
 
 **Guest Editing:**  Kristopher Tapp and I will be guest editing the [Mathematical and Computational Democracy](https://link.springer.com/collections/fjgfgbbgeb) special collection of La Matematica.  [Here is the call for papers](https://link.springer.com/journal/44007/updates/27816096).  
 
