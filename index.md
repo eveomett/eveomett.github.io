@@ -17,4 +17,4 @@ Office:   Harney 440G
 - [Redistricting and Computational Democracy](redistricting.md)
 - [Teaching](teaching.md)
 - [Immerse Course Resources](immerse.md)
-- [Computational Democracy and Equity Lab](lab.md)
+- [<span style="color:#C45AEC">Co</span>mputational <span style="color:#C45AEC">D</span>emocracy and <span style="color:#C45AEC">E</span>quity Lab](lab.md)
